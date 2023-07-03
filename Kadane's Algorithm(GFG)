@@ -1,0 +1,38 @@
+Kadane's Algorithm(GFG)
+
+
+CPP
+
+long long maxSubarraySum(int arr[], int n){
+// Your code here
+        long long sum=0;long long maximum=INT_MIN;
+
+        for(int i=0;i<n;i++){
+
+            sum+=arr[i];
+
+            maximum=max(sum,maximum);
+
+            if(sum<0)
+
+            sum=0;
+
+        }
+
+        return maximum;
+        
+    }
+
+
+Python
+
+def maxSubArraySum(self,arr,N):
+        ##Your code here
+        s=0
+        maximum=arr[0]
+        for i in range(N):
+            s=s+arr[i]
+            maximum=max(maximum,s)
+            if s<0:
+                s=0
+        return maximum
