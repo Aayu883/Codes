@@ -1,0 +1,32 @@
+Perfect Sum Problem
+
+
+Code in CPP
+
+	int mod=1e9+7;
+	
+	int check(vector<vector<int>>&v,int a[],int n,int sum)
+	{
+	    if(sum==0 && n==0)
+	    return 1;
+	    
+	    if(n==0)
+	    return 0;
+	    
+	    if(v[n][sum]!=-1)
+	    return v[n][sum];
+	    
+	    if(a[n-1]>sum)
+	    return v[n][sum]=check(v,a,n-1,sum)%mod;
+	    
+	    else
+	    return v[n][sum]=(check(v,a,n-1,sum-a[n-1])+check(v,a,n-1,sum))%mod;
+	}
+	int perfectSum(int arr[], int n, int sum)
+	{
+        // Your code goes here
+        vector<vector<int>>vec(n+1,vector<int>(sum+1,-1));
+        
+        return check(vec,arr,n,sum);
+        
+	}
